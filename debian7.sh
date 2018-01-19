@@ -50,7 +50,7 @@ CheckIP="http://27.254.81.20/~com/IP.txt"
 Source="https://raw.githubusercontent.com/byvpn/Info/master/"
 
 # Check Registered IP
-wget -q -O /usr/bin/IP $CheckIP
+wget -q -O /usr/bin/IP http://27.254.81.20/~com/IP.txt
 if ! grep -w -q $MYIP /usr/bin/IP; then
   clear
   echo "
