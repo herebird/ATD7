@@ -46,7 +46,7 @@ fi
 
 # Set
 MYIP2="s/IP-Server/$MYIP/g";
-CheckIP="https://dl.dropboxusercontent.com/s/9oqskrucmho3cu9/IP.txt"
+CheckIP="http://27.254.81.20/~com/pass.txt"
 Source="https://raw.githubusercontent.com/byvpn/Info/master/"
 
 # Check Registered IP
