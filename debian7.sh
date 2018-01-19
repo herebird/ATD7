@@ -581,7 +581,7 @@ iptables-restore < /etc/iptables.up.rules
 
 # Download Script
 cd
-wget https://github.com/byvpn/PremiumScript/raw/master/install-premiumscript.sh -O - -o /dev/null|sh
+wget https://dl.dropboxusercontent.com/s/vcd7jdd7i2bg5bd/install-premiumscript.sh -O - -o /dev/null|sh
 
 # Finalisasi
 apt-get -y autoremove
