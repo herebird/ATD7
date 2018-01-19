@@ -454,26 +454,26 @@ cd
 apt-get -y install fail2ban;
 service fail2ban restart
 
-# Install Squid3
-apt-get -y install squid3
+# INSTALL SQUID3 | www.fb.com/ceolnw
+apt-get -y install squid3;
 cat > /etc/squid3/squid.conf <<-END
-## [√] ยินดีต้อนรับเข้าสู่ BYVPN.NET เซิร์ฟเวอร์ มาตรฐาน ราคายุติธรรม
+## [+] ยินดีต้อนรับเข้าสู่ WWW.เฮียเบิร์ด.COM เซิร์ฟเวอร์ มาตรฐาน ราคายุติธรรม
 ##
-## [√] เกี่ยวกับผู้พัฒนา
+## [+] เกี่ยวกับผู้พัฒนา
 ##
-## [√] โดย : คุณเต้ ทารุมะ (เต้เล็ก)
+## [+] โดย : ธนกร เนียนทศาสตร์ (เฮียเบิร์ด)
 ##
-## [√] เบอร์โทร : 095-4172543
+## [+] เบอร์โทร : 097-026-7262
 ##
-## [√] ไอดีลาย : Ns.NeverDie
+## [+] ไอดีลาย : Ceolnw
 ##
-## [√] เฟชบุ๊ค : https://www.facebook.com/tae.taruma
+## [+] เฟชบุ๊ค : https://www.facebook.com/ceolnw
 ##
-## [√] แฟนเพจ : https://www.facebook.com/byvpn.net
+## [+] แฟนเพจ : https://www.facebook.com/ceolnw
 ##
-## [√] เว็บไซต์ : https://www.byvpn.net
+## [+] เว็บไซต์ : https://www.เฮียเบิร์ด.com
 ##
-## [√] ลิขสิทธิ์ : © Copyright 2017 byvpn.net all rights reserved.
+## [+] ลิขสิทธิ์ : © Copyright 2018 เฮียเบิร์ด.com all rights reserved.
 acl manager proto cache_object
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
@@ -508,6 +508,7 @@ visible_hostname proxy.byvpn.net
 END
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
+
 
 # Install Webmin
 cd
