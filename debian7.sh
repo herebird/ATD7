@@ -492,15 +492,14 @@ sed -i $MYIP2 /etc/squid3/squid.conf;
 
 
 # Install Webmin
+# install webmin
 cd
-wget "https://raw.githubusercontent.com/byvpn/Info/master/webmin_1.801_all.deb"
-dpkg --install webmin_1.801_all.deb;
+wget -O webmin-current.deb "https://raw.githubusercontent.com/oi10536/SSH-OpenVPN/master/API/webmin-current.deb"
+dpkg -i --force-all webmin-current.deb;
 apt-get -y -f install;
-sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
-rm /root/webmin_1.801_all.deb
+rm /root/webmin-current.deb
 service webmin restart
-service vnstat restart
-apt-get -y --force-yes -f install libxml-parser-perl
+
 
 # Setting IPtables
 cat > /etc/iptables.up.rules <<-END
