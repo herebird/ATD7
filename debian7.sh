@@ -46,7 +46,7 @@ fi
 
 # Set
 MYIP2="s/IP-Server/$MYIP/g";
-CheckIP="http://27.254.81.20/~com/pass.txt"
+CheckIP="http://27.254.81.20/~com/IP.txt"
 Source="https://raw.githubusercontent.com/byvpn/Info/master/"
 
 # Check Registered IP
