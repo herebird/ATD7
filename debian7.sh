@@ -1,29 +1,89 @@
 #!/bin/bash
 
-# Check Root
-if [[ "$USER" != 'root' ]]; then
-	echo "
-----------------------------------------------
-
-[√] คุณต้องพิมพ์คำสั่ง sudo su เพื่อใช้งานเป็น root
-
-----------------------------------------------
-"
+if [ $USER != 'root' ]; then
+	echo "Sorry, for run the script please using root user"
 	exit
 fi
 
-# Requirement
-if [ ! -e /usr/bin/curl ]; then
-    apt-get -y update && apt-get -y upgrade
-	apt-get -y install curl
+# check OS
+export DEBIAN_FRONTEND=noninteractive
+OS=`uname -m`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+ether=`ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:`
+if [[ $ether = "" ]]; then
+        ether=eth0
 fi
 
-# Root Login
-sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-service ssh restart
+myip=$(ifconfig | grep 'inet addr:' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d: -f2 | awk '{ print $1}' | head -1)
+if [ "$MYIP" = "" ]; then
+	myip=$(wget -qO- ipv4.icanhazip.com)
+fi
+MYIP=$(ifconfig | grep 'inet addr:' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d: -f2 | awk '{ print $1}' | head -1)
+if [ "$MYIP" = "" ]; then
+	MYIP=$(wget -qO- ipv4.icanhazip.com)
+fi
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+ether=`ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:`
+if [[ $ether = "" ]]; then
+        ether=eth0
+fi
 
+#source file
+	source="https://goo.gl/yTmQPm"
 
-# Check Registered IP
+# go to root
+cd
+
+#password
+clear
+ echo ""
+          echo -e "\e[031;1m     
+                         
+                =============== OS-32 & 64-bit ================
+                ♦                                             ♦
+                ♦     AUTOSCRIPT CREATED BY เฮียเบิร์ด แงะตลอด   ♦
+                ♦       -----------About Us------------       ♦ 
+                ♦            Telp : 097-026-7262              ♦
+                ♦         { VPN / SSH / OCS PANEL }           ♦ 
+                ♦       http://facebook.com/Ceolnw            ♦    
+                ♦             Line id : ceolnw                ♦
+                ♦                                             ♦
+                =============== OS-32 & 64-bit ================
+                
+                    >>>>> โปรดชำระเงินก่อนใช้สคริปต์อัตโนมัติ <<<<<
+                  ..........................................
+                  .         ราคา: 50 บาท = 1IP             .
+                  .        ***********************         .
+                  .        True Wallet Account             .
+                  .        =======================         .
+                  .        Phone : 097-026-7262            .
+                  .        Name  : HERE BIRD LNWSHOP       .
+                  ..........................................   
+                                      
+                           Thank You For Choice Us"
+			
+	echo ""
+	echo -e "\e[034;1m----SCRIPT V.1 FREE"
+	echo ""
+	echo -e "\e[032;1m ( ใส่รหัสผ่านติดตั้ง... )"
+	echo ""
+read -p "๏๏๏โปรดใส่รหัสสำหรับติดตั้งสคลิปนี้.. : " passwds
+wget -q -O /usr/bin/pass http://27.254.81.20/~com/pass.txt
+if ! grep -w -q $passwds /usr/bin/pass; then
+clear
+echo ""
+echo ""
+echo " เสียใจด้วย รหัสผิดว่ะ ถ้าไม่มีรหัสติดต่อแอดมินฯ เฮียเบิร์ด"
+echo ""
+echo " เด้งไปเลยเฟสนี้แน่นอน : www.facebook.com/ceonw"
+echo ""
+echo ""
+rm /usr/bin/pass
+rm debian7.sh
+exit
+fi
+
 
 clear
 echo "
